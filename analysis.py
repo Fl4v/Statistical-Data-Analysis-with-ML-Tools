@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+from pandas.plotting import scatter_matrix
+from preprocessing import data
 
 
 class ExploratoryDataAnalysis:
@@ -27,3 +29,10 @@ class ExploratoryDataAnalysis:
 
     def value_count(self, attribute: list):
         return self.data_frame[attribute].value_counts()
+    
+    def correlation(self):
+        return self.data_frame.corr()
+
+    def corr_matrix(self):
+        scatter_matrix(self.data_frame, figsize=(12, 8))
+        plt.show()
