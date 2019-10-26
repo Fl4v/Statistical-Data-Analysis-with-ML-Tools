@@ -15,6 +15,6 @@ To run the random daily image:
 $ python3 random_daily_image.py
 ```
 
-## TO-DO
+#### TO-DO
 
 - [ ] Organise project with a proper folder structure
