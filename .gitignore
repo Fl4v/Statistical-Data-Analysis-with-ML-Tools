@@ -13,3 +13,4 @@ my_*
 datasets/
 .vscode/
 __pycache__/*
+data/
