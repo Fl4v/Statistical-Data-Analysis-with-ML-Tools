@@ -5,4 +5,5 @@ This project has been inspiried by Aurelion Gerion `Hands-On Machine Learning wi
 
 This project also contain a small fun scripts that downloads and diplays Nasa's random daily image using the `PIL` library.
 
-To run the random daily image: `$ python3 random_daily_image.py`
+To run the random daily image:
+```$ python3 random_daily_image.py```
