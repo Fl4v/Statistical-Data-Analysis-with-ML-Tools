@@ -7,8 +7,7 @@
 checkpoint
 logs/*
 tf_logs/*
-images/**/*.png
-images/**/*.dot
+images/
 my_*
 datasets/
 .vscode/

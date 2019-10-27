@@ -15,10 +15,10 @@ class NasaApod:
         global image_name
         image_name = str(json_data['title'] + '.jpg')
 
-        urlretrieve(json_data['url'], 'data/' + image_name)
+        urlretrieve(json_data['url'], 'images/' + image_name)
 
     def open_daily_image(self):
-        img = Image.open('data/' + image_name)
+        img = Image.open('images/' + image_name)
         img.show()
 
 
