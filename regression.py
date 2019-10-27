@@ -1,30 +1,25 @@
-import matplotlib.pyplot as plt
-import numpy as np
+from preprocessing import data
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 import pandas as pd
-import sklearn.linear_model
 
-from preprocessing import prepare_country_stats
+linear_regression = LinearRegression()
+stellar_data = data('q1_q16_stellar_clean.csv')
 
-# Load the data
-oecd_bli = pd.read_csv(datapath + "oecd_bli_2015.csv", thousands=',')
-gdp_per_capita = pd.read_csv(datapath + "gdp_per_capita.csv",thousands=',',delimiter='\t',
-                             encoding='latin1', na_values="n/a")
+mass_median = stellar_data['mass'].median()
+stellar_temperature_median = stellar_data['stellar_temperature'].median()
 
-# Prepare the data
-country_stats = prepare_country_stats(oecd_bli, gdp_per_capita)
-X = np.c_[country_stats["GDP per capita"]]
-y = np.c_[country_stats["Life satisfaction"]]
+stellar_data['mass'].fillna(mass_median, inplace=True)
+stellar_data['stellar_temperature'].fillna(stellar_temperature_median, inplace=True)
 
-# Visualize the data
-country_stats.plot(kind='scatter', x="GDP per capita", y='Life satisfaction')
-plt.show()
+X = stellar_data['mass'].values.reshape(-1, 1)
+y = stellar_data['stellar_temperature'].values.reshape(-1,1)
 
-# Select a linear model
-model = sklearn.linear_model.LinearRegression()
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train the model
-model.fit(X, y)
+stellar_data_regression = linear_regression.fit(X_train, y_train)
 
-# Make a prediction for Cyprus
-X_new = [[22587]]  # Cyprus' GDP per capita
-print(model.predict(X_new))  # outputs [[ 5.96242338]]
+y_pred = stellar_data_regression.predict(X_test)
+
+actual_v_predicted = pd.DataFrame({'Actual': y_test.flatten(), 'Predicted': y_pred.flatten()})
+print(actual_v_predicted)
