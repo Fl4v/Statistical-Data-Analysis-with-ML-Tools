@@ -18,3 +18,4 @@ $ python3 random_daily_image.py
 #### TO-DO
 
 - [ ] Organise project with a proper folder structure
+- [ ] Add tests
