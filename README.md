@@ -19,4 +19,5 @@ $ python3 random_daily_image.py
 
 - [ ] Organise project with a proper folder structure
 - [ ] Add tests
-- [ ] Expand the import class to import and clean data, i.e. fill n/a with median
+- [ ] Finish the pipeline for cleaning the data, i.e. fill n/a with median
+- [ ] Clean regression file
